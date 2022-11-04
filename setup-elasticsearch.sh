@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Check current ES installation
+
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
 
 sudo apt-get install apt-transport-https
