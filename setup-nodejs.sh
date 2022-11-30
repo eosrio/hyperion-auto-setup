@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Check current NodeJS Installation
-NODE_VERSION=$(node -v | cut -d. -f1)
+NODE_VERSION=$(node -v);
 
-if [ "$NODE_VERSION" == "v18" ]; then
-  echo "NodeJS 18 Detected. Skipping setup...";
+NODE_MAJOR=$(echo "$NODE_VERSION" | cut -d. -f1);
+
+if [ "v18" = "$NODE_MAJOR" ]; then
+  echo "NodeJS detected!"
+  echo "Version: $NODE_VERSION"
+  echo "Skipping setup..."
 else
   curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
 fi
