@@ -5,7 +5,7 @@ RABBITMQ_VERSION=$(sudo rabbitmqctl version)
 RABBITMQ_MAJOR=$(echo "$RABBITMQ_VERSION" | cut -d. -f1)
 RABBITMQ_MINOR=$(echo "$RABBITMQ_VERSION" | cut -d. -f2)
 
-if [ "3" = "$RABBITMQ_MAJOR" ] && [ "$RABBITMQ_MINOR" -ge "8" ]; then
+if [ "3" = "$RABBITMQ_MAJOR" ] && [ "$RABBITMQ_MINOR" -ge "12" ]; then
   echo "RabbitMQ detected!"
   echo "Version: $RABBITMQ_VERSION"
   echo "Skipping setup..."
