@@ -30,15 +30,24 @@ install_node_with_fnm() {
     echo "Installing FNM (Fast Node Manager)..."
     
     # Download and install FNM
-    curl -o- https://fnm.vercel.app/install | bash
+    curl -fsSL https://fnm.vercel.app/install | bash
     
-    # Source the shell configuration to make fnm available
-    export PATH="$HOME/.fnm:$PATH"
-    eval "$(fnm env --use-on-cd)"
+    # FNM installation directory
+    FNM_DIR="$HOME/.local/share/fnm"
     
-    # Try to source common shell configs
-    if [ -f "$HOME/.bashrc" ]; then
-        source "$HOME/.bashrc"
+    # Setup fnm for current session
+    export PATH="$FNM_DIR:$PATH"
+    eval "$(fnm env --use-on-cd --shell bash)"
+    
+    # Add fnm to shell configuration if not already present
+    SHELL_CONFIG="$HOME/.bashrc"
+    FNM_SETUP_LINE='eval "$(fnm env --use-on-cd --shell bash)"'
+    
+    if [ -f "$SHELL_CONFIG" ] && ! grep -q "fnm env" "$SHELL_CONFIG"; then
+        echo "Adding fnm to $SHELL_CONFIG..."
+        echo "" >> "$SHELL_CONFIG"
+        echo "# FNM (Fast Node Manager)" >> "$SHELL_CONFIG"
+        echo "$FNM_SETUP_LINE" >> "$SHELL_CONFIG"
     fi
     
     # Install Node.js 24 (latest LTS)
@@ -53,6 +62,7 @@ install_node_with_fnm() {
     npm -v
     
     echo "Node.js installation completed!"
+    echo "Note: You may need to restart your terminal or run 'source ~/.bashrc' to use fnm in new sessions."
 }
 
 # Check current Node.js version
