@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function checkElasticsearchVersion() {
- ES_HOST="https://localhost:9200"
- ES_CERT_PATH="/etc/elasticsearch/certs/http_ca.crt"
- ES_VERSION=$(sudo curl -Ss --cacert $ES_CERT_PATH -u elastic:"$(cat elastic.pass)" $ES_HOST | jq -r '.version.number')
- ES_MAJOR=$(echo "$ES_VERSION" | cut -d. -f1)
- echo "$ES_VERSION" > .elasticsearch.version
+  ES_HOST="https://localhost:9200"
+  ES_CERT_PATH="/etc/elasticsearch/certs/http_ca.crt"
+  ES_VERSION=$(sudo curl -Ss --cacert $ES_CERT_PATH -u elastic:"$(cat elastic.pass)" $ES_HOST | jq -r '.version.number')
+  ES_MAJOR=$(echo "$ES_VERSION" | cut -d. -f1)
+  echo "$ES_VERSION" >.elasticsearch.version
 }
 
 function installElasticsearch() {
@@ -23,8 +23,7 @@ function installElasticsearch() {
   echo "Elasticsearch Ready! - Version: $ES_VERSION"
 }
 
-if command -v elasticsearch &> /dev/null
-then
+if command -v /usr/share/elasticsearch/bin/elasticsearch &>/dev/null; then
   checkElasticsearchVersion
   if [ "9" = "$ES_MAJOR" ] || [ "8" = "$ES_MAJOR" ]; then
     echo "Elasticsearch detected!"
