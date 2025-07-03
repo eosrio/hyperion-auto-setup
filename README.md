@@ -107,7 +107,7 @@ After successful installation:
    cd ~/hyperion
    ```
 
-2. **Configure Hyperion**: Edit configuration files in the `examples` directory
+2. **Configure Hyperion**: Follow the [official configuration documentation](https://hyperion.docs.eosrio.io/providers/setup/hyperion_configuration/) for detailed setup instructions
 
 3. **Start Services**: Ensure all services are running:
    ```shell
