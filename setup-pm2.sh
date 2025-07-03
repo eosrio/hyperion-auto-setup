@@ -9,11 +9,11 @@ then
     echo "Skipping setup..."
   else
     echo "PM2 not found, installing..."
-    sudo npm install pm2 -g || exit
-    sudo pm2 startup
+    npm install pm2 -g || exit
+    pm2 startup
   fi
 else
   echo "PM2 not found, installing..."
-  sudo npm install pm2 -g || exit
-  sudo pm2 startup
+  npm install pm2 -g || exit
+  pm2 startup
 fi
