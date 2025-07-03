@@ -5,5 +5,5 @@ if [ -x "$(command -v jq)" ] && [ -x "$(command -v curl)" ] && [ -x "$(command -
   exit
 else
   sudo apt-get update
-  sudo apt-get install jq net-tools curl git -y
+  sudo apt-get install gnupg jq net-tools curl git unzip apt-transport-https -y
 fi

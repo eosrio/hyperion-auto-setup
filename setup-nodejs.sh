@@ -29,10 +29,6 @@ check_node_version() {
 install_node_with_fnm() {
     echo "Installing FNM (Fast Node Manager)..."
     
-    # Install curl if not present
-    sudo apt-get update
-    sudo apt-get install -y curl
-    
     # Download and install FNM
     curl -o- https://fnm.vercel.app/install | bash
     
