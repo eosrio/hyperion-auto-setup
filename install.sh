@@ -5,7 +5,13 @@ DISTRO_CODENAME=$(lsb_release -cs)
 if [ "$DISTRO_CODENAME" == "noble" ] || [ "$DISTRO_CODENAME" == "jammy" ]; then
   bash ./setup-tools.sh
   bash ./setup-nodejs.sh
-  source ~/.bashrc
+  
+  # Load FNM environment for current session if it exists
+  if [ -d "$HOME/.local/share/fnm" ]; then
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "$($HOME/.local/share/fnm/fnm env --use-on-cd --shell bash)"
+  fi
+  
   bash ./setup-pm2.sh
   bash ./setup-elasticsearch.sh
   bash ./setup-rabbitmq.sh

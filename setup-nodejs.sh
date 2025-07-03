@@ -35,9 +35,16 @@ install_node_with_fnm() {
     # FNM installation directory
     FNM_DIR="$HOME/.local/share/fnm"
     
-    # Setup fnm for current session
+    # Setup fnm for current session - load it properly
     export PATH="$FNM_DIR:$PATH"
-    eval "$(fnm env --use-on-cd --shell bash)"
+    
+    # Source the fnm environment properly
+    if [ -f "$FNM_DIR/fnm" ]; then
+        eval "$($FNM_DIR/fnm env --use-on-cd --shell bash)"
+    else
+        echo "Error: FNM installation failed - fnm binary not found at $FNM_DIR/fnm"
+        exit 1
+    fi
     
     # Add fnm to shell configuration if not already present
     SHELL_CONFIG="$HOME/.bashrc"
