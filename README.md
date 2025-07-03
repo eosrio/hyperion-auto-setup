@@ -163,8 +163,7 @@ Or remove individual components:
 
 For issues related to:
 - **Installation Script**: Open an issue in this repository
-- **Hyperion Configuration**: Visit the [Hyperion History API repository](https://github.com/eosrio/hyperion-history-api)
-- **EOSIO Integration**: Check the [EOSIO documentation](https://developers.eos.io/)
+- **Hyperion Configuration**: Visit the [official Hyperion documentation](https://hyperion.docs.eosrio.io/)
 
 ## License
 
