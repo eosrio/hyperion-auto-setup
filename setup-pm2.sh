@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ~/.bashrc
-
 # Function to setup PM2 startup
 setup_pm2_startup() {
     echo "Setting up PM2 startup..."

@@ -5,6 +5,7 @@ DISTRO_CODENAME=$(lsb_release -cs)
 if [ "$DISTRO_CODENAME" == "noble" ] || [ "$DISTRO_CODENAME" == "jammy" ]; then
   bash ./setup-tools.sh
   bash ./setup-nodejs.sh
+  source ~/.bashrc
   bash ./setup-pm2.sh
   bash ./setup-elasticsearch.sh
   bash ./setup-rabbitmq.sh
